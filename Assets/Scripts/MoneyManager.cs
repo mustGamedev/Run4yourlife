@@ -7,35 +7,33 @@ public class MoneyManager : MonoBehaviour
     private Text _moneyText;
     [SerializeField] private int _money;
 
-    private int MoneySystem
+    private int Money
     {
         get=>_money;
-        set{ _money = value; }
+        set
+        {
+            _money = value;
+            _moneyText.text = _money.ToString();
+        }
     }
 
     private void Awake()
     {
         instance = this;
         _moneyText = transform.GetChild(1).GetComponent<Text>();
-        UpdateUiText();
+        _moneyText.text = _money.ToString();
     }
     
     ///<summary>Adds some amount of money</summary>
     public void AddMoney(int moneyToAdd)
     {
-        _money+=moneyToAdd;
-        UpdateUiText();
+        Money+=moneyToAdd;
     }
 
     ///<summary>Removes some amount of money</summary>
     public void MinusMoney(int moneyToMinus)
     {
-        _money-=moneyToMinus;
-        UpdateUiText();
+        Money-=moneyToMinus;
     }
 
-    private void UpdateUiText()
-    {
-        _moneyText.text = _money.ToString();
-    }
 }
