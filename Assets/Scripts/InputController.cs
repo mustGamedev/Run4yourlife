@@ -4,7 +4,7 @@ public class InputController : MonoBehaviour
 {
     [Header("Movement settings")]
     [Range(1f,20f)] [SerializeField] private float _movementSpeed = 7f;
-    [Range(40f,200f)] [SerializeField] private float _mouseDragSpeed = 80f;
+    [Range(40f,200f)] [SerializeField] private float _mouseDragSpeed = 100f;
 
     [Header("Touch settings")]
     [SerializeField] private bool isTouching;

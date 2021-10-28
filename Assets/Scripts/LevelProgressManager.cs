@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class LevelProgressManager : MonoBehaviour
 {
+   public static LevelProgressManager instance;
+
    private Slider _sliderFillBar;
 
    [Header ("Player & Endline transform")]
@@ -13,6 +15,8 @@ public class LevelProgressManager : MonoBehaviour
 
    private void Awake()
    {
+      instance = this;
+
       _sliderFillBar = transform.GetChild(0).GetComponent<Slider>();
 
       _endLinePosition = _endLineTransform.position;
@@ -27,7 +31,7 @@ public class LevelProgressManager : MonoBehaviour
          float newDistance = GetDistance();
          float progressValue = Mathf.InverseLerp(_fullDistance, 0f, newDistance);
 
-         UpdateProgressFill (progressValue);
+         UpdateProgressFill(progressValue);
       }
    }
 
@@ -40,5 +44,11 @@ public class LevelProgressManager : MonoBehaviour
    private void UpdateProgressFill(float fillValue)
    {
       _sliderFillBar.value = fillValue;
+   }
+
+   ///<summary>Disables game progress UI bar</summary>
+   public void DisableUIBar()
+   {
+      _sliderFillBar.gameObject.SetActive(false);
    }
 }
