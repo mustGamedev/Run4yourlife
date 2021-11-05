@@ -3,10 +3,10 @@ using UnityEngine;
 public class ObjectRotator : MonoBehaviour
 {
     [Header("Set rotation speed here")]
-    [Range(0.05f,1f)] [SerializeField] private float _rotationSpeed = 0.5f;
+    [Range(1f,50f)] [SerializeField] private float _rotationSpeed = 10f;
 
-    private void Update()
+    private void FixedUpdate()
     {
-        transform.Rotate(0, _rotationSpeed, 0 ,Space.World);
+        transform.Rotate(0, _rotationSpeed*10 * Time.fixedDeltaTime, 0 ,Space.World);
     }
 }
